@@ -1,0 +1,36 @@
+"def mean(nums):
+        return sum(nums)/len(nums)
+print(mean([88,92,79,95,63]))"
+"def total(n):
+    total1=0
+    for x in range(n):
+        total1+=x+1
+    return total1
+print(total(10))"
+"def biggest(a, b, c): 
+ans = a 
+if b > ans: 
+ans = b 
+if c > ans: 
+ans = c 
+return ans 
+print(biggest(3, 9, 5))"
+"
+def pass_fail(score):
+if score>=60:
+	return “pass”
+	else:
+		return “fail”
+print(pass_fail(45))
+print(pass_fail(80))"
+"def average(a, b, c):
+    return (a+b+c)/3
+print(average(80,90,100))
+
+"
+"def double(num):
+	return num*2
+def quadr(num):
+	return double(double(num))
+
+print(quadr(5))"
