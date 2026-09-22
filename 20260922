@@ -1,0 +1,52 @@
+import time
+import random
+import turtle
+turtle.tracer(0,0)
+
+class circle:
+
+    def __init__(self):
+        self.t=turtle.Turtle()
+        self.t.ht()
+        self.t.up()
+        self.t.speed(0)
+
+        self.dx = 30
+        self.dy = 30
+
+tlist=[]
+
+for x in range(50):
+    t=circle()
+    t.dx = random.randint(-200,200)
+    t.dy = random.randint(-200,200)
+    tlist.append(t)
+
+
+def move(t,dt):
+    tt = t.t
+    tt.clear()
+    pos = tt.pos()
+    posx = pos[0]
+    posy = pos[1]
+    tt.goto(posx+t.dx*dt, posy+t.dy*dt)
+    tt.dot(10)
+
+fps = 60
+dt = 1/fps
+while True:
+    start = time.perf_counter()
+
+    for x in range(len(tlist)):
+        move(tlist[x],dt)
+    turtle.update()
+
+    elapsed = time.perf_counter() - start
+    time.sleep(max(0, dt - elapsed))
+
+
+
+
+
+
+
