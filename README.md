@@ -3,3 +3,4 @@
 20260922 class 및 객체속성 조작방법 학습
 20261006 python turtle onkey함수 개념및 사용방법 학습
 20261013 python turtle 키보드 및 마우스 사용방법 학습
+20261027 python turtle 키보드 및 마우스 사용방법 학습
