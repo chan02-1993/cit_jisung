@@ -1,0 +1,189 @@
+import time
+import math
+import random
+import turtle
+turtle.tracer(0,0)
+
+screen = turtle.Screen()
+
+screen_width_size = 1200
+screen_height_size = 900
+screen.setup(width=screen_width_size, height=screen_height_size)
+
+canvas = screen.getcanvas()
+root = canvas.winfo_toplevel()
+
+class circle:
+
+    def __init__(self):
+        self.t=turtle.Turtle()
+        self.t.ht()
+        self.t.up()
+        self.t.speed(0)
+
+        self.dx = 30
+        self.dy = 30
+
+tlist=[]
+
+for x in range(2):
+    t=circle()
+    t.dx = random.randint(-20,20)
+    t.dy = random.randint(-20,20)
+    tlist.append(t)
+
+w = False
+a = False
+s = False
+d = False
+space=False
+
+
+def key_w():
+    global w
+    w = True
+
+def key_release_w():
+    global w
+    w = False
+
+
+def key_a():
+    global a
+    a = True
+
+def key_release_a():
+    global a
+    a = False
+    
+
+def key_s():
+    global s
+    s = True
+
+def key_release_s():
+    global s
+    s = False
+
+
+def key_d():
+    global d
+    d = True
+
+def key_release_d():
+    global d
+    d = False
+
+def key_space():
+    global space
+    space=True
+
+def key_release_space():
+    global space
+    space=False
+
+turtle.listen()
+turtle.onkeypress(key_w, "w")
+turtle.onkeyrelease(key_release_w, "w")
+turtle.onkeypress(key_a, "a")
+turtle.onkeyrelease(key_release_a, "a")
+turtle.onkeypress(key_s, "s")
+turtle.onkeyrelease(key_release_s, "s")
+turtle.onkeypress(key_d, "d")
+turtle.onkeyrelease(key_release_d, "d")
+turtle.onkeypress(key_space, " space")
+turtle.onkeyrelease(key_release_space, "space")
+
+
+
+def move(t,dt):
+    tt = t.t
+    tt.clear()
+    pos = tt.pos()
+    posx = pos[0]
+    posy = pos[1]
+    tt.goto(posx+t.dx*dt, posy+t.dy*dt)
+    tt.dot(10)
+
+
+
+passed_time = 0
+fps = 60
+dt = 1/fps
+
+size = 350
+
+while True:
+    start = time.perf_counter()
+
+    # 1. 마우스 위치 실시간 확인 (프레임마다 폴링)
+    pointer_x = root.winfo_pointerx() - canvas.winfo_rootx()
+    pointer_y = root.winfo_pointery() - canvas.winfo_rooty()
+    
+    turtle_x = pointer_x - screen.window_width() / 2
+    turtle_y = screen.window_height() / 2 - pointer_y
+    
+    #print(turtle_x,turtle_y)
+
+    """
+    tlist[0].dy += w*500 * dt
+    tlist[0].dx -= a*500 * dt
+    tlist[0].dy -= s*500 * dt
+    tlist[0].dx += d*500 * dt
+    
+    if space==True:
+        tlist[0].dx=0
+        tlist[0].dy=0
+    """
+
+    """
+    # 벽으로 가면 튕겨져 나옴
+    tx=tlist[0].t.pos()[0]
+    ty=tlist[0].t.pos()[1]
+
+    if tx>size and tlist[0].dx>0:
+        tlist[0].dx*=-1
+    if tx<-size and tlist[0].dx<0:
+          tlist[0].dx*=-1
+    if ty>size and tlist[0].dy>0:
+         tlist[0].dy*=-1
+    if ty<-size and tlist[0].dy<0:
+         tlist[0].dy*=-1
+    """
+
+    tx=tlist[0].t.pos()[0]
+    ty=tlist[0].t.pos()[1]
+
+    a=turtle_x - tx
+    b=turtle_y - ty
+
+    
+    tlist[0].dx += a/2
+    tlist[0].dy += b/2
+
+    print(a,b)
+
+    start = time.perf_counter()
+
+    for x in range(len(tlist)):
+        move(tlist[x],dt)
+    turtle.update()
+    
+    elapsed = time.perf_counter() - start
+    time.sleep(max(0, dt - elapsed))
+    passed_time+=dt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
