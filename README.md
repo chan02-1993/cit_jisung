@@ -5,3 +5,4 @@
 20261013 python turtle 키보드 및 마우스 사용방법 학습
 20261027 python turtle 키보드 및 마우스 사용방법 학습
 20261103 python 리스트 복습
+20261110 python 리스트 복습
