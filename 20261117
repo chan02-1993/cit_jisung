@@ -1,0 +1,53 @@
+"word = ""SCHOOL""
+chars = []
+
+for i in range(len(word)):
+    if word[i] == ""O"":
+        continue
+    chars.append(word[i])
+    # ◀ 기록
+
+print(chars)"
+"word = ""PYTHON""
+chars = []
+cnt = 0
+
+for i in range(len(word)):
+    if i % 2 == 0:
+        continue
+
+    chars.append(word[i])
+    cnt += len(chars)
+    # ◀ 기록
+
+print("""".join(chars), cnt)"
+"data = [[1, 2], [3, 4], [5]]
+total = 0
+
+for row in data:
+    for n in row:
+        total += n
+        # ◀ 기록
+
+print(total)"
+"nums = [3, 1, 4, 2]
+total = 0
+
+for n in nums:
+    if n % 2 == 0:
+        break
+    total += n
+    # ◀ 기록
+
+print(n, total)"
+"words = [""hi"", ""cat""]
+result = """"
+
+for w in words:
+    for ch in w:
+        if ch == ""a"":
+            continue
+        result += ch
+        # ◀ 기록
+
+print(result)"
