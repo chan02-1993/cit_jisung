@@ -1,0 +1,108 @@
+"import pygame
+import sys
+
+pygame.init()
+
+# 화면 설정
+WIDTH, HEIGHT = 800, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption(""Jump Example"")
+
+clock = pygame.time.Clock()
+
+# 바닥 설정
+ground_y = 500
+
+
+# 객체 설정
+width = 50
+height = 50
+
+x = 100
+y = ground_y-height
+
+# 점프 설정
+velocity_y = 0
+gravity = 0.8
+jump_power = -20
+is_jumping = False
+
+
+
+
+
+
+while True:
+    screen.fill((255, 255, 255))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        # 스페이스바 입력
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and not is_jumping:
+                velocity_y = jump_power
+                is_jumping = True
+
+    # 중력 적용
+    if is_jumping:
+        velocity_y += gravity
+        y += velocity_y
+
+    # 바닥 충돌
+    if y + height >= ground_y:
+        y = ground_y - height
+        velocity_y = 0
+        is_jumping = False
+
+    
+
+    # 바닥 그리기
+    pygame.draw.line(screen, (0, 0, 0),
+                     (0, ground_y), (WIDTH, ground_y), 3)
+
+    # 객체 그리기
+    pygame.draw.rect(screen, (0, 100, 255),
+                     (x, y, width, height))
+
+    
+
+
+    pygame.display.update()
+    clock.tick(60)
+"
+"words = [""cat"", ""dog"", ""cow""]
+result = """"
+
+for w in words:
+    if w[0] == ""d"":
+        continue
+    for ch in w:
+        if ch == ""a"":
+            continue
+        result += ch
+        # ◀ 기록
+
+print(result)"
+"x = 1
+cnt = 0
+
+while x < 50:
+    x = x * 3 - 1
+    cnt += 1
+    # ◀ 기록
+
+print(x, cnt)"
+"nums = [4, 9, 2, 9, 6]
+best = nums[0]
+idx = 0
+
+for i in range(len(nums)):
+    if nums[i] > best:
+        best = nums[i]
+        idx = i
+    # ◀ 기록
+
+print(best, idx)"
